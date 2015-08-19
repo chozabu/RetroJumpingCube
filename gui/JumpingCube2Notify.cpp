@@ -1,11 +1,11 @@
-#include "NetExampleNotify.h"
+#include "JumpingCube2Notify.h"
 
-NetExampleNotify::NetExampleNotify(QObject *parent) : QObject(parent)
+JumpingCube2Notify::JumpingCube2Notify(QObject *parent) : QObject(parent)
 {
 
 }
 
-void NetExampleNotify::notifyReceivedPaint(const RsPeerId &peer_id, int x, int y)
+void JumpingCube2Notify::notifyReceivedPaint(const RsPeerId &peer_id, int x, int y)
 {
 	std::cout << "pNotify Recvd paint from: " << peer_id;
 	std::cout << " at " << x << " , " << y;
@@ -14,7 +14,7 @@ void NetExampleNotify::notifyReceivedPaint(const RsPeerId &peer_id, int x, int y
 }
 
 
-void NetExampleNotify::notifyReceivedMsg(const RsPeerId& peer_id, QString str)
+void JumpingCube2Notify::notifyReceivedMsg(const RsPeerId& peer_id, QString str)
 {
 	std::cout << "pNotify Recvd Packet from: " << peer_id;
 	std::cout << " saying " << str.toStdString();

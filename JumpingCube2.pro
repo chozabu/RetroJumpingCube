@@ -15,6 +15,7 @@ MOBILITY = multimedia
 
 DEPENDPATH += ../../retroshare-gui/src/temp/ui ../../libretroshare/src
 INCLUDEPATH += ../../retroshare-gui/src/temp/ui ../../libretroshare/src
+INCLUDEPATH += ../../retroshare-gui/src/retroshare-gui
 
 #################################### Windows #####################################
 
@@ -33,29 +34,32 @@ win32 {
 
 QMAKE_CXXFLAGS *= -Wall
 
-SOURCES = NetExamplePlugin.cpp               \
-          services/p3NetExample.cc           \
-          services/rsNetExampleItems.cc \
+SOURCES = JumpingCube2Plugin.cpp               \
+          services/p3JumpingCube2.cc           \
+          services/rsJumpingCube2Items.cc \
     gui/NEMainpage.cpp \
-    gui/NetExampleNotify.cpp \
-    gui/paintwidget.cpp
+    gui/JumpingCube2Notify.cpp \
+    gui/paintwidget.cpp \
+    gui/jumpingcubewindow.cpp
 
-HEADERS = NetExamplePlugin.h                 \
-          services/p3NetExample.h            \
-          services/rsNetExampleItems.h       \
-          interface/rsNetExample.h \
+HEADERS = JumpingCube2Plugin.h                 \
+          services/p3JumpingCube2.h            \
+          services/rsJumpingCube2Items.h       \
+          interface/rsJumpingCube2.h \
     gui/NEMainpage.h \
-    gui/NetExampleNotify.h \
-    gui/paintwidget.h
+    gui/JumpingCube2Notify.h \
+    gui/paintwidget.h \
+    gui/jumpingcubewindow.h
 
 #FORMS   = gui/AudioInputConfig.ui
 
-TARGET = NetExample
+TARGET = JumpingCube2
 
-RESOURCES = gui/NetExample_images.qrc
+RESOURCES = gui/JumpingCube2_images.qrc
 
 
 LIBS += -lspeex -lspeexdsp
 
 FORMS += \
-    gui/NEMainpage.ui
+    gui/NEMainpage.ui \
+    gui/jumpingcubewindow.ui

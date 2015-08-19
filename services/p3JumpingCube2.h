@@ -26,15 +26,15 @@
 #include <string>
 #include <QVariantMap>
 
-#include "services/rsNetExampleItems.h"
+#include "services/rsJumpingCube2Items.h"
 #include "services/p3service.h"
 #include "serialiser/rstlvbase.h"
 #include "serialiser/rsconfigitems.h"
 #include "plugins/rspqiservice.h"
-#include <interface/rsNetExample.h>
+#include <interface/rsJumpingCube2.h>
 
 class p3LinkMgr;
-class NetExampleNotify ;
+class JumpingCube2Notify ;
 
 
 
@@ -44,14 +44,14 @@ class NetExampleNotify ;
   * This is only used to test Latency for the moment.
   */
 
-class p3NetExample: public RsPQIService, public RsNetExample
+class p3JumpingCube2: public RsPQIService, public RsJumpingCube2
 // Maybe we inherit from these later - but not needed for now.
 //, public p3Config, public pqiMonitor
 {
 	public:
-		p3NetExample(RsPluginHandler *cm,NetExampleNotify *);
+		p3JumpingCube2(RsPluginHandler *cm,JumpingCube2Notify *);
 
-		/***** overloaded from rsNetExample *****/
+		/***** overloaded from rsJumpingCube2 *****/
 
 
 		/***** overloaded from p3Service *****/
@@ -78,7 +78,7 @@ class p3NetExample: public RsPQIService, public RsNetExample
 		 */
 		virtual bool saveList(bool& cleanup, std::list<RsItem*>&) ;
 		virtual bool loadList(std::list<RsItem*>& load) ;
-		virtual std::string configurationFileName() const { return "NetExample.cfg" ; }
+		virtual std::string configurationFileName() const { return "JumpingCube2.cfg" ; }
 
 		virtual RsServiceInfo getServiceInfo() ;
 
@@ -93,9 +93,9 @@ private:
 
 
 
-		void handleData(RsNetExampleDataItem*) ;
+		void handleData(RsJumpingCube2DataItem*) ;
 
-		RsMutex mNetExampleMtx;
+		RsMutex mJumpingCube2Mtx;
 
 
 		static RsTlvKeyValue push_int_value(const std::string& key,int value) ;
@@ -103,6 +103,6 @@ private:
 
 
 		RsServiceControl *mServiceControl;
-		NetExampleNotify *mNotify ;
+		JumpingCube2Notify *mNotify ;
 
 };

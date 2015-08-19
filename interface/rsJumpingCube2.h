@@ -20,7 +20,7 @@
  *  Boston, MA  02110-1301, USA.
  ****************************************************************/
 
-// interface class for p3NetExample service
+// interface class for p3JumpingCube2 service
 //
 
 #pragma once
@@ -31,18 +31,19 @@
 #include <vector>
 #include <retroshare/rstypes.h>
 
-class RsNetExample ;
-extern RsNetExample *rsNetExample;
+class RsJumpingCube2 ;
+extern RsJumpingCube2 *rsJumpingCube2;
  
-static const uint32_t CONFIG_TYPE_NetExample_PLUGIN 		= 0xe001 ;
+static const uint32_t CONFIG_TYPE_JumpingCube2_PLUGIN 		= 0xe001 ;
 
-class RsNetExample
+class RsJumpingCube2
 {
 	public:
 
 	virtual void ping_all() = 0;
 	virtual void broadcast_paint(int x, int y) = 0;
 	virtual void msg_all(std::string msg) = 0;
+	virtual void qvm_msg_peer(RsPeerId peerID, QVariantMap data) = 0;
 };
 
 

@@ -23,7 +23,7 @@
 #pragma once
 
 /*
- * libretroshare/src/serialiser: rsNetExampleItems.h
+ * libretroshare/src/serialiser: rsJumpingCube2Items.h
  *
  * RetroShare Serialiser.
  *
@@ -54,23 +54,23 @@
 
 /**************************************************************************/
 
-const uint16_t RS_SERVICE_TYPE_NetExample_PLUGIN = 0xb00b5;
+const uint16_t RS_SERVICE_TYPE_JumpingCube2_PLUGIN = 0x010101;
 
-const uint8_t RS_PKT_SUBTYPE_NetExample_DATA 	   = 0x01;
+const uint8_t RS_PKT_SUBTYPE_JumpingCube2_DATA 	   = 0x01;
 
-const uint8_t QOS_PRIORITY_RS_NetExample = 9 ;
+const uint8_t QOS_PRIORITY_RS_JumpingCube2 = 9 ;
 
 
-class RsNetExampleItem: public RsItem
+class RsJumpingCube2Item: public RsItem
 {
 	public:
-		RsNetExampleItem(uint8_t NetExample_subtype)
-			: RsItem(RS_PKT_VERSION_SERVICE,RS_SERVICE_TYPE_NetExample_PLUGIN,NetExample_subtype)
+		RsJumpingCube2Item(uint8_t JumpingCube2_subtype)
+			: RsItem(RS_PKT_VERSION_SERVICE,RS_SERVICE_TYPE_JumpingCube2_PLUGIN,JumpingCube2_subtype)
 		{ 
-			setPriorityLevel(QOS_PRIORITY_RS_NetExample) ;
+			setPriorityLevel(QOS_PRIORITY_RS_JumpingCube2) ;
 		}	
 
-		virtual ~RsNetExampleItem() {};
+		virtual ~RsJumpingCube2Item() {};
 		virtual void clear() {};
 		virtual std::ostream& print(std::ostream &out, uint16_t indent = 0) = 0 ;
 
@@ -79,16 +79,16 @@ class RsNetExampleItem: public RsItem
 };
 
 
-class RsNetExampleDataItem: public RsNetExampleItem
+class RsJumpingCube2DataItem: public RsJumpingCube2Item
 {
 	public:
-		RsNetExampleDataItem() :RsNetExampleItem(RS_PKT_SUBTYPE_NetExample_DATA) {}
-		RsNetExampleDataItem(void *data,uint32_t size) ; // de-serialization
+		RsJumpingCube2DataItem() :RsJumpingCube2Item(RS_PKT_SUBTYPE_JumpingCube2_DATA) {}
+		RsJumpingCube2DataItem(void *data,uint32_t size) ; // de-serialization
 
 		virtual bool serialise(void *data,uint32_t& size) ;
 		virtual uint32_t serial_size() const ; 							
 
-		virtual ~RsNetExampleDataItem()
+		virtual ~RsJumpingCube2DataItem()
 		{
 		}
 		virtual std::ostream& print(std::ostream &out, uint16_t indent = 0);
@@ -99,23 +99,23 @@ class RsNetExampleDataItem: public RsNetExampleItem
 };
 
 
-class RsNetExampleSerialiser: public RsSerialType
+class RsJumpingCube2Serialiser: public RsSerialType
 {
 	public:
-		RsNetExampleSerialiser()
-			:RsSerialType(RS_PKT_VERSION_SERVICE, RS_SERVICE_TYPE_NetExample_PLUGIN)
+		RsJumpingCube2Serialiser()
+			:RsSerialType(RS_PKT_VERSION_SERVICE, RS_SERVICE_TYPE_JumpingCube2_PLUGIN)
 		{ 
 		}
-		virtual ~RsNetExampleSerialiser() {}
+		virtual ~RsJumpingCube2Serialiser() {}
 
 		virtual uint32_t 	size (RsItem *item) 
 		{ 
-			return dynamic_cast<RsNetExampleItem *>(item)->serial_size() ;
+			return dynamic_cast<RsJumpingCube2Item *>(item)->serial_size() ;
 		}
 
 		virtual	bool serialise  (RsItem *item, void *data, uint32_t *size)
 		{ 
-			return dynamic_cast<RsNetExampleItem *>(item)->serialise(data,*size) ;
+			return dynamic_cast<RsJumpingCube2Item *>(item)->serialise(data,*size) ;
 		}
 		virtual	RsItem *deserialise(void *data, uint32_t *size);
 };

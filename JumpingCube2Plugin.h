@@ -21,25 +21,25 @@
  ****************************************************************/
 #pragma once
 
-/*NetExample*/
-#include "services/p3NetExample.h"
+/*JumpingCube2*/
+#include "services/p3JumpingCube2.h"
 
 /*libretroshare"*/
 #include <retroshare/rsplugin.h>
 
 #include "gui/NEMainpage.h"
 
-class NetExampleGUIHandler ;
-class NetExampleNotify ;
+class JumpingCube2GUIHandler ;
+class JumpingCube2Notify ;
 
-class NetExamplePlugin: public RsPlugin
+class JumpingCube2Plugin: public RsPlugin
 {
 	public:
-		NetExamplePlugin() ;
-		virtual ~NetExamplePlugin() {}
+		JumpingCube2Plugin() ;
+		virtual ~JumpingCube2Plugin() {}
 
 		virtual p3Service      *p3_service() 			const	;
-		virtual uint16_t        rs_service_id()         const { return RS_SERVICE_TYPE_NetExample_PLUGIN ; }
+		virtual uint16_t        rs_service_id()         const { return RS_SERVICE_TYPE_JumpingCube2_PLUGIN ; }
 		//virtual ConfigPage     *qt_config_page()        const ;
 		virtual QDialog        *qt_about_page()         const ;
 		//virtual ChatWidgetHolder *qt_get_chat_widget_holder(ChatWidget *chatWidget) const ;
@@ -51,7 +51,7 @@ class NetExamplePlugin: public RsPlugin
 		virtual void getPluginVersion(int& major, int& minor, int &build, int& svn_rev) const ;
 		virtual void setPlugInHandler(RsPluginHandler *pgHandler);
 
-		virtual std::string configurationFileName() const { return "NetExample.cfg" ; }
+		virtual std::string configurationFileName() const { return "JumpingCube2.cfg" ; }
 
 		virtual std::string getShortPluginDescription() const ;
 		virtual std::string getPluginName() const;
@@ -63,14 +63,14 @@ class NetExamplePlugin: public RsPlugin
 		virtual MainPage       *qt_page()       			const	;
 
 	private:
-		mutable p3NetExample *mNetExample ;
+		mutable p3JumpingCube2 *mJumpingCube2 ;
 		mutable RsPluginHandler *mPlugInHandler;
 		mutable RsPeers* mPeers;
 		mutable ConfigPage *config_page ;
 		mutable QIcon *mIcon;
 		mutable MainPage* mainpage ;
 
-		NetExampleNotify *mNetExampleNotify ;
-		NetExampleGUIHandler *mNetExampleGUIHandler ;
+		JumpingCube2Notify *mJumpingCube2Notify ;
+		JumpingCube2GUIHandler *mJumpingCube2GUIHandler ;
 };
 

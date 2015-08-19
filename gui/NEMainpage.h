@@ -5,7 +5,9 @@
 #include <retroshare-gui/mainpage.h>
 #include <retroshare/rsfiles.h>
 #include <retroshare/rspeers.h>
-#include "gui/NetExampleNotify.h"
+#include "gui/JumpingCube2Notify.h"
+
+#include "jumpingcubewindow.h"
 
 
 
@@ -20,9 +22,11 @@ class NEMainpage : public MainPage
 	Q_OBJECT
 
 public:
-	explicit NEMainpage(QWidget *parent, NetExampleNotify *notify);
+	explicit NEMainpage(QWidget *parent, JumpingCube2Notify *notify);
 	~NEMainpage();
 
+public slots:
+	void sendMClick(std::string peerid, int x, int y);
 private slots:
 	void mmEvent(int x, int y);
 	void on_pingAllButton_clicked();
@@ -31,9 +35,12 @@ private slots:
 	void on_broadcastButton_clicked();
 
 	void NePaintArrived(const RsPeerId &peer_id, int x, int y);
+	void on_playButton_clicked();
+
 private:
 	Ui::NEMainpage *ui;
-	NetExampleNotify *mNotify;
+	JumpingCube2Notify *mNotify;
+	QMap <RsPeerId, JumpingCubeWindow*> jcGames;
 };
 
 #endif // NEMAINPAGE_H
