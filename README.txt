@@ -1,7 +1,4 @@
-RS .6 Example Plugin
+RS .6 Jumping Cube
 ==================
 
-This is somewhat based on the VOIP plugin.
-
-Simplified to make it easier to see how things work.
-
+This is another retroshare Game, similar to jumpingcube - see kjumpingcube
